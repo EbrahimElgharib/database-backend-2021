@@ -1,0 +1,76 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.all_contianer {
+  height: 100vh;
+}
+.main_cont {
+  background: linear-gradient(90deg, #a0add0, #e4c3ca);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sub {
+  text-align: center;
+  width: 50%;
+}
+.img_cont img {
+  width: 120px;
+  height: 120px;
+  margin: 20px;
+}
+.info1_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.info1_box > .row {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+label {
+  font-size: 2em;
+  color: darkslateblue;
+}
+input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #f7d291;
+  background-color: unset;
+  margin: 0 10px;
+  color: black;
+  font-size: 2em;
+}
+.info2_box .row {
+  display: flex;
+  flex-wrap: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info2_box .row input {
+  width: 40%;
+}
+
+.ageoptipn {
+  height: 30px;
+  width: 30%;
+  border-radius: 30px;
+  padding: 0 10px;
+  margin: 20px;
+}
+.infoage {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
