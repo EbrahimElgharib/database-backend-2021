@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--     Fonts and icons     -->
+    <link
+      href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/index2.css" />
+
+    <link href="assets/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!--   Creative Tim Branding   -->
+
+    <div class="nav">
+      <a href="index.html" class="navbar-brand">
+        <i class="fa fa-ambulance" style="font-size: 30px"></i>
+        <div class="ambulance_link">Ambulance Center</div></a
+      >
+
+      <div class="imgcontainer">
+        <img src="/images/doctor.svg" alt="Avatar" class="avatar" />
+      </div>
+      <div class="login_title">
+        <h2>Login Form</h2>
+      </div>
+    </div>
+
+    <div class="formcontinerhome">
+      <div class="formcontiner">
+        <form id="Login" action="index4.html" method="post">
+          <div class="container">
+            <label for="UsID"><b>Username</b></label>
+            <input
+              type="text"
+              id="Id_User"
+              placeholder="Enter user Id"
+              name="UsID"
+              required
+            />
+
+            <label for="psw"><b>Password</b></label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="psw"
+              required
+            />
+
+            <div class="dflex dc jc aic">
+              <div>
+                <input type="checkbox" checked="checked" name="remember" />
+                <label> Remember me </label>
+              </div>
+              <button type="submit">Login</button>
+            </div>
+          </div>
+
+          <div class="container" style="background-color: #f1f1f1">
+            <span class="psw"> <a href="#"> Forgot password?</a></span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
