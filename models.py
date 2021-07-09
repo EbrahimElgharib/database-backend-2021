@@ -63,13 +63,12 @@ class Crew(models.Model):
 
 
 class Employees(models.Model):
-    employee_id = models.AutoField(db_column='Employee_ID', primary_key=True)  # Field name made lowercase.
+    employee = models.OneToOneField('AuthUser', models.DO_NOTHING, db_column='Employee_ID', primary_key=True)  # Field name made lowercase.
     employee_name = models.CharField(db_column='Employee_Name', max_length=45)  # Field name made lowercase.
     birth_date = models.DateField(db_column='Birth_Date')  # Field name made lowercase.
     phone_number = models.CharField(db_column='Phone_Number', max_length=11)  # Field name made lowercase.
     national_number = models.CharField(db_column='National_Number', max_length=14)  # Field name made lowercase.
     address = models.CharField(db_column='Address', max_length=45)  # Field name made lowercase.
-    password = models.CharField(db_column='Password', max_length=45)  # Field name made lowercase.
     emp_type = models.IntegerField(db_column='Emp_Type')  # Field name made lowercase.
 
     class Meta:
