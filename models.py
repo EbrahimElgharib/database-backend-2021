@@ -157,6 +157,22 @@ class Vehicles(models.Model):
         db_table = 'VEHICLES'
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Auth
+
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 

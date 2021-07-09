@@ -1,18 +1,16 @@
 from django import forms
 # from .models import Profile
 from django.contrib.auth.models import User
+from .models import Employees
               
 
 class UserForm(forms.ModelForm):
    class Meta:
       model = User
-      fields = ['username','email','first_name','last_name'] 
+      fields = ['username',]
       # fields = ['email','first_name','last_name'] 
 
-# class ProfileForm(forms.ModelForm):
-#    image = forms.ImageField(error_messages={'invalid':("Image Files Only!")}, widget=forms.FileInput)
-#    class Meta:
-#       model = Profile
-#       # fields = ['image', 'phone_number','country', 'address','education']
-#       fields = ['image','phone_number','country']
-#       # fields = ['user','phone_number','address','image']
+class EmployeesForm(forms.ModelForm):
+   class Meta:
+      model = Employees
+      fields = ['employee_name', 'national_number','phone_number', 'address','birth_date','emp_type']
