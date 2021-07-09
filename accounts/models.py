@@ -29,23 +29,65 @@ def create_user_Employees(sender, instance, created, **kwargs):
         Employees.objects.create(employee=instance)
 
 
-# class Manager(models.Model):
-#     manager = models.OneToOneField(Employees, models.DO_NOTHING, db_column='Manager_ID', primary_key=True)  # Field name made lowercase.
-#     station = models.ForeignKey('Station', models.DO_NOTHING, db_column='Station_ID')  # Field name made lowercase.
+class Manager(models.Model):
+    manager = models.OneToOneField(Employees, models.DO_NOTHING, db_column='Manager_ID', primary_key=True)  # Field name made lowercase.
+    station = models.ForeignKey('Station', models.DO_NOTHING, db_column='Station_ID')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'MANAGER'
+    class Meta:
+        managed = False
+        db_table = 'MANAGER'
 
 
 
-# class StationEmployees(models.Model):
-#     station_employee = models.OneToOneField(Employees, models.DO_NOTHING, db_column='Station_Employee_ID', primary_key=True)  # Field name made lowercase.
-#     station = models.ForeignKey(Station, models.DO_NOTHING, db_column='Station_ID')  # Field name made lowercase.
-#     crew = models.ForeignKey(Crew, models.DO_NOTHING, db_column='Crew_ID')  # Field name made lowercase.
-#     job_title = models.CharField(db_column='Job_Title', max_length=45)  # Field name made lowercase.
-#     number_of_accidents = models.IntegerField(db_column='Number_Of_Accidents', blank=True, null=True)  # Field name made lowercase.
+class StationEmployees(models.Model):
+    station_employee = models.OneToOneField(Employees, models.DO_NOTHING, db_column='Station_Employee_ID', primary_key=True)  # Field name made lowercase.
+    station = models.ForeignKey('Station', models.DO_NOTHING, db_column='Station_ID')  # Field name made lowercase.
+    crew = models.ForeignKey('Crew', models.DO_NOTHING, db_column='Crew_ID')  # Field name made lowercase.
+    job_title = models.CharField(db_column='Job_Title', max_length=45)  # Field name made lowercase.
+    number_of_accidents = models.IntegerField(db_column='Number_Of_Accidents', blank=True, null=True)  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'STATION_EMPLOYEES'
+    class Meta:
+        managed = False
+        db_table = 'STATION_EMPLOYEES'
+
+
+class Station(models.Model):
+    station_id = models.AutoField(db_column='Station_ID', primary_key=True)  # Field name made lowercase.
+    hospital = models.ForeignKey(Hospital, models.DO_NOTHING, db_column='Hospital_ID', blank=True, null=True)  # Field name made lowercase.
+    station_type = models.IntegerField(db_column='Station_Type')  # Field name made lowercase.
+    place_long = models.FloatField(db_column='Place_Long')  # Field name made lowercase.
+    place_lat = models.FloatField(db_column='Place_Lat')  # Field name made lowercase.
+    governerate = models.CharField(db_column='Governerate', max_length=45)  # Field name made lowercase.
+    city = models.CharField(db_column='City', max_length=45)  # Field name made lowercase.
+    available_cars = models.IntegerField(db_column='Available_Cars')  # Field name made lowercase.
+    car_numbers = models.IntegerField(db_column='Car_Numbers')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'STATION'
+
+
+
+class Crew(models.Model):
+    crew_id = models.AutoField(db_column='Crew_ID', primary_key=True)  # Field name made lowercase.
+    station = models.ForeignKey(Station, models.DO_NOTHING, db_column='Station_ID')  # Field name made lowercase.
+    vehicle = models.ForeignKey('Vehicles', models.DO_NOTHING, db_column='Vehicle_ID')  # Field name made lowercase.
+    crew_status = models.CharField(db_column='Crew_Status', max_length=45)  # Field name made lowercase.
+    number_of_accidents = models.IntegerField(db_column='Number_Of_Accidents')  # Field name made lowercase.
+    current_accident = models.IntegerField(db_column='Current_Accident', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'CREW'
+
+
+class Vehicles(models.Model):
+    vehicle_id = models.IntegerField(db_column='Vehicle_ID', primary_key=True)  # Field name made lowercase.
+    station = models.ForeignKey(Station, models.DO_NOTHING, db_column='Station_ID')  # Field name made lowercase.
+    vehicle_status = models.CharField(db_column='Vehicle_Status', max_length=45)  # Field name made lowercase.
+    vehicle_number = models.CharField(db_column='Vehicle_Number', max_length=24)  # Field name made lowercase.
+    special_case = models.CharField(db_column='Special_Case', max_length=45, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'VEHICLES'
