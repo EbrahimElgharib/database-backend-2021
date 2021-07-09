@@ -1,8 +1,8 @@
+from reporting_accident.models import Hospital
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
 # Create your models here.
 
 
@@ -32,7 +32,8 @@ def create_user_Employees(sender, instance, created, **kwargs):
 class Manager(models.Model):
     manager = models.OneToOneField(Employees, models.DO_NOTHING, db_column='Manager_ID', primary_key=True)  # Field name made lowercase.
     station = models.ForeignKey('Station', models.DO_NOTHING, db_column='Station_ID')  # Field name made lowercase.
-
+    def __str__(self):
+            return str(self.manager)
     class Meta:
         managed = False
         db_table = 'MANAGER'
@@ -45,7 +46,8 @@ class StationEmployees(models.Model):
     crew = models.ForeignKey('Crew', models.DO_NOTHING, db_column='Crew_ID')  # Field name made lowercase.
     job_title = models.CharField(db_column='Job_Title', max_length=45)  # Field name made lowercase.
     number_of_accidents = models.IntegerField(db_column='Number_Of_Accidents', blank=True, null=True)  # Field name made lowercase.
-
+    def __str__(self):
+            return str(self.station_employee)
     class Meta:
         managed = False
         db_table = 'STATION_EMPLOYEES'

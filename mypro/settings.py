@@ -44,10 +44,6 @@ INSTALLED_APPS = [
     'bootstrap4',
     'crispy_forms',
 
-    ##### FrontEnd
-    # https://pypi.org/project/django-bootstrap4/
-    "bootstrap4",
-    'crispy_forms',
 
     
 ]
