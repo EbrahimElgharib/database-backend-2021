@@ -38,6 +38,7 @@ body {
 label {
   font-size: 3em;
   color: aliceblue;
+  text-transform: capitalize;
 }
 input {
   width: 100%;
@@ -48,6 +49,8 @@ input {
   margin: 0 10px;
   color: black;
   font-size: 2em;
+  text-transform: capitalize;
+  text-align: center;
 }
 .info2_box .row {
   display: flex;
@@ -58,4 +61,8 @@ input {
 }
 .info2_box .row input {
   width: 40%;
+}
+.title {
+  display: flex;
+  justify-content: space-evenly;
 }
