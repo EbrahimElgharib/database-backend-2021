@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'django.contrib.sites',
+    'reporting_accident',
+    'bootstrap4',
+    'crispy_forms',
 
     ##### FrontEnd
     # https://pypi.org/project/django-bootstrap4/
