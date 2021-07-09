@@ -26,6 +26,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')), # User Auth
     path('accounts/', include('accounts.urls', namespace='accounts')), # Profile
     path('admin/', admin.site.urls),
+    path('reporter/', include('reporting_accident.urls', namespace='reporting')),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
