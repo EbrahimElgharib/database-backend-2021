@@ -48,6 +48,7 @@ input {
   margin: 0 10px;
   color: black;
   font-size: 2em;
+  text-align: center;
 }
 .info2_box .row {
   display: flex;
@@ -58,4 +59,8 @@ input {
 }
 .info2_box .row input {
   width: 40%;
+}
+.title {
+  display: flex;
+  justify-content: space-evenly;
 }
