@@ -2,6 +2,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-transform: capitalize;
 }
 .container1 {
   height: 100vh;
