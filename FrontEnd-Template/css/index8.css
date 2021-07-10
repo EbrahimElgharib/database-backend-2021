@@ -2,6 +2,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-transform: capitalize;
 }
 .all_contianer {
   height: 100vh;
@@ -42,13 +43,14 @@ label {
 }
 input {
   width: 100%;
-  border: none;
+  /* border: none; */
   outline: none;
-  border-bottom: 2px solid #f7d291;
+  border: 2px solid #f7d291;
   background-color: unset;
   margin: 0 10px;
   color: black;
   font-size: 2em;
+  text-align: center;
 }
 .info2_box .row {
   display: flex;
@@ -90,4 +92,32 @@ input {
 
 .my-float {
   margin-top: 22px;
+}
+.infoage label {
+  width: 50%;
+}
+.butbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.butbox button {
+  position: relative;
+  margin: 10px;
+  height: 60px;
+  width: 160px;
+  display: block;
+  line-height: 60px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  overflow: hidden;
+  border: 2px;
+}
+.butbox button:first-child {
+  background: linear-gradient(-90deg, #f5ce62, #e85a19);
 }
