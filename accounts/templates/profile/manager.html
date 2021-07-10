@@ -1,4 +1,4 @@
-<h1>Manager Page Control</h1>
+<!-- <h1>Manager Page Control</h1>
 
 {{manager.manager.employee_name}}
 {{manager.station.station_id}}
@@ -7,7 +7,64 @@
     <h3>{{crew.crew_status}}</h3>
     <h3>{{crew.crew_id}}</h3>
 ------------------
-{% endfor %}
+{% endfor %} -->
+
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/index7.css' %}" />
+
+  <title>manger</title>
+</head>
+<body>
+  <div class="container1">
+  <div class="main_cont">
+    <div class="sub">
+
+      <div class="img_cont">
+        <img src="{% static 'images/doctor.svg' %}" alt="">
+      </div>
+      <div class="info1_box">
+        <div class="row">
+          <label for="">Manger
+          </label>
+          <input type="text" value="{{manager.manager.employee_name}}">
+        </div>
+        <div class="row">
+  <label for=""> Station</label>
+  <input type="text"value="{{manager.station.station_id}}">
+</div>
+</div>
+    <div class="info2_box">
+      <div class="title">
+        <label for="">crew</label>
+        <label for="">status</label>
+      </div>
+      <div class="table_content">
+          {% for crew in crews %}
+        <div class="row"><input type="text" value="{{crew.crew_id}}"><input type="text" value="{{crew.crew_status}}"></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+ <a href="" class="float" type onClick="window.location.reload();">
+                <i class="fa fa-plus my-float">
+                  <img src="{% static 'images/refresh.svg' %}" alt="" />
+                </i>
+              </a>
+</body>
+</html>
 
 
 
