@@ -14,4 +14,4 @@ class ReporterForm(forms.ModelForm):
 class AccidentForm(forms.ModelForm):
     class Meta:
         model = Accident
-        fields = ['accident_description', 'accident_volume', 'special_case_1', 'special_case_2', 'special_case_3', 'special_case_4', 'place_lat', 'place_long','accident_time','hospital']  
+        fields = ['accident_description', 'accident_volume', 'special_case_1', 'special_case_2', 'special_case_3', 'special_case_4', 'place_lat', 'place_long','accident_time']  

@@ -1,7 +1,7 @@
 
-alert("fgh");
+
 function getLocation() {
-  console.log("xxx")
+  
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos) {
         //You have your locaton here
@@ -9,6 +9,8 @@ function getLocation() {
         console.log("Latitude: " + pos.coords.latitude +"Longitude: " +pos.coords.longitude);
         document.getElementById('longitude').innerHTML =  "    موقعي بالنسبة لخط الطول::  "+pos.coords.longitude;
         document.getElementById('Latitude').innerHTML =  "  موقعي بالنسبة لخط العرض::     "+pos.coords.latitude;
+        document.getElementById('id_place_long').value =  pos.coords.longitude;
+        document.getElementById('id_place_lat').value =  pos.coords.latitude;
         });
       } else {
         console.log("Geolocation is not supported by this browser.");

@@ -1,3 +1,4 @@
+from django.db.models.aggregates import Min
 from django.shortcuts import render
 
 # Create your views here.
@@ -5,7 +6,7 @@ from django.shortcuts import render
 
 
 from . forms import ReporterForm, AccidentForm
-from .models import Accident, Reporter, Hospital
+from .models import Accident, Reporter, Hospital, Station, Crew
 import math
 
 #from geopy.geocoders import Nominatim
@@ -19,17 +20,8 @@ import math
 def accident_report(request):
     if request.method=='POST':
 
-        form = ReporterForm(request.POST)
-        if form.is_valid():
-            form.save()
-
-
-
-
-
-
-
         form1 = AccidentForm(request.POST)
+
         if form1.is_valid():
             lat = form1.cleaned_data.get('place_lat')
             Long = form1.cleaned_data.get('place_long')
@@ -60,11 +52,91 @@ def accident_report(request):
             listOfLIsts = bycol_decl(hos_id, keylist)
             print(listOfLIsts)
             desired_id = listOfLIsts[0][y]
-            print(desired_id)
+            print(desired_id)        #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Nearst Hospital ID
+
+
+            station_ambulance = Station.objects.values('place_lat','place_long')
+            print(station_ambulance)
+            station_ambulance_id = Station.objects.values('station_id')
+            print(station_ambulance_id)
+            total_stations_distances = []
+            for s in station_ambulance:
+                print(s)
+                coord_station = (s['place_lat'], s['place_long'])  # as it is a dictionary
+                print(coord_station)
+                station_distance = haversine(coord1, coord_station)
+                total_stations_distances.append(station_distance)
+                print(station_distance)
+            print(total_stations_distances)
+            mini_distance = min(total_stations_distances)
+            print(mini_distance)
+            min_dis_index = total_stations_distances.index(mini_distance)  
+            print(min_dis_index)  
+            keylist2 = ['station_id']
+            listOfLIsts2 = bycol_decl(station_ambulance_id, keylist2)
+            print(listOfLIsts2)
+            desired_station_id = listOfLIsts2[0][min_dis_index]
+            print(desired_station_id)      #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Nearst Station ID
+
+
+            # query to select crew according to the station
+            crews = Crew.objects.filter(station = desired_station_id, crew_status = 'Available',  )
+            print(crews)
+            k = crews.aggregate(Min ('number_of_accidents'))
+            j = k['number_of_accidents__min']
+            print(j)
+            
+            #g = Crew.objects.filter(station = crews, number_of_accidents = k  )
+            g = Crew.objects.filter(number_of_accidents = j , station=desired_station_id, crew_status='Available'  )
+            
+            a = g.values_list('pk')
+            h = list(a)
+            print(h)
+            
+
+
+            '''
+            w = h[0]
+            r = w[0]     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> crewID
+            print(g, crews,list(a), w, r)
+            
+        
+            Y = Crew.objects.get(crew_id =r )
+            Y.crew_status = 'in duty'
+            Y.save()
+            print(Y)
+            '''
+
+
+            
+
+
+            #form1.save()
+            
+            instance = form1.save(commit = False)
+            instance.Hospital = desired_id
+            instance.save()
+            print("kkk")
+           
 
             
             
             
+        form = ReporterForm(request.POST)
+        if form.is_valid():
+            #z = Accident.objects.values('accident_id').filter(place_lat =lat )['accident_id']
+            #print(z)
+            form.save()
+        
+                
+            #acc = Accident.objects.get(place_lat =lat )
+            #acc_id = acc.accident_id
+            #print(acc_id)
+
+
+
+
+            #form.save()
 
 
 
