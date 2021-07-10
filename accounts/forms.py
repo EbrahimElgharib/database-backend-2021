@@ -1,7 +1,7 @@
 from django import forms
 # from .models import Profile
 from django.contrib.auth.models import User
-from .models import Employees, Manager, StationEmployees
+from .models import Crew, Employees, Manager, StationEmployees
               
 
 class UserForm(forms.ModelForm):
@@ -25,5 +25,13 @@ class StationEmployeesForm(forms.ModelForm):
    class Meta:
       model = StationEmployees
       fields = ['station','crew', 'job_title' , 'number_of_accidents']
+
+class CrewForm(forms.ModelForm):
+   class Meta:
+      model = Crew
+      fields = ['crew_status',]
+
+
+
 
 

@@ -6,7 +6,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from .models import Employees,Manager,StationEmployees, Crew
 
-from .forms import UserForm, EmployeesForm, ManagerForm, StationEmployeesForm
+from .forms import CrewForm, UserForm, EmployeesForm, ManagerForm, StationEmployeesForm
 # from .models import Profile
 
 # Create your views here.
@@ -130,27 +130,61 @@ def managerView(request):
    return render(request, 'profile/manager.html',context)
    
    
+
+
+
+
+
+
+
+
    
 def driverView(request):
    profile = Employees.objects.get(employee=request.user)
-   station_emp = StationEmployees.objects.get(manager=profile)
+   station_emp = StationEmployees.objects.get(station_employee=profile)
 
    # test
    print('here ___>>>')
-   print(station_emp.manager.employee_name)
    print(station_emp.station.station_id)
+   print(station_emp.crew.crew_id)
 
 
-   # return all crew
-   crews = Crew.objects.filter(station=station_emp.station.station_id)
-   # test
-   print('crews after')
-   for crew in crews:   
-      print(crew.crew_status)
+   if request.method == 'POST': # when click submit button
+      # get request data to check valid and save
+      # request.FILES ---> to save uploaded files
+      # profile_form = EmployeesForm(request.POST, request.FILES, instance=profile)
 
+      print('post send')
+      crew_form = CrewForm(request.POST, instance=station_emp)
+      # check valid --> save
+      if crew_form.is_valid():
+         print('station_emp_form is valid')
+         # myprofile = crew_form.save(commit=False)
+         # myprofile.crew_id = station_emp.crew
+         crew_form.save()
+         print('myprofile is saved')
+         return redirect('/accounts/profile/driver')
+      else:
+         print('crew_form not valid')
+         return redirect('/accounts/profile/driver')
+
+   else: # when open page 
+      print('else not POST')
+      crew = Crew.objects.get(crew_id=station_emp.crew.crew_id)
+      print('hi')
+      print(crew.crew_id)
+      crew_form = CrewForm(instance=crew)
+      
    context = {
       'station_emp' : station_emp,
-      'crews' : crews,
+      'crew_form' : crew_form,
 
    }
    return render(request, 'profile/driver.html',context)
+
+
+
+
+def paramedic(request):
+   context = {}
+   return render(request, 'profile/paramedic.html',context)
