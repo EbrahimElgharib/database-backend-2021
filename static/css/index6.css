@@ -1,0 +1,224 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+}
+p,
+span {
+  font-size: x-large;
+  font-weight: 800;
+  margin: unset;
+}
+.card_container {
+  /* height: 100vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../images/slider3.jpg);
+  background: linear-gradient(rgba(29, 38, 113, 0.8), rgba(195, 55, 100, 0.8)),
+    url("../images/slider3.jpg"); /* The least supported option. */
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.7;
+}
+.person_data p {
+  margin: 10px 0;
+}
+.card {
+  width: 100%;
+  /* height: 100vh; */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.5);
+  /* padding: 30px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border-radius: 20px; */
+}
+.profile_img img {
+  border: 2.5px solid #04aa6d;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+}
+.info1 {
+  text-align: center;
+}
+.info2 {
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.info2 span {
+  font-size: larger;
+}
+.col1,
+.col2 {
+  margin: 20px;
+}
+.info3 {
+  width: 100%;
+}
+.info_for_person {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.box {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.infobox {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+.info3 img {
+  width: 60px;
+  height: 60px;
+}
+
+.info2 input,
+.info3 input {
+  border: none;
+  outline: none;
+  background-color: unset;
+  text-align: center;
+  font-size: x-large;
+  color: #000;
+  font-family: cairo;
+  table-layout: fixed;
+  width: 100%;
+  font-weight: 500;
+}
+.info2 input {
+  text-align: start;
+}
+form {
+  width: 40%;
+}
+
+.butbox {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+}
+.butbox button {
+  position: relative;
+  margin: 10px;
+  height: 60px;
+  width: 160px;
+  display: block;
+  line-height: 60px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  overflow: hidden;
+  border: 2px;
+}
+.butbox button:first-child {
+  background: linear-gradient(-90deg, #f5ce62, #e85a19);
+}
+.butbox button:nth-child(2) {
+  background: linear-gradient(90deg, #0162c8, #55e7fc);
+}
+.butbox button:last-child {
+  background: linear-gradient(90deg, #0162c8, #55e7fc);
+}
+.butbox a {
+  text-decoration: none;
+}
+.btns a:first-child {
+  background: linear-gradient(-90deg, #f5ce62, #e85a19);
+}
+.btns a:last-child {
+  text-decoration: none;
+  background: linear-gradient(90deg, #0162c8, #55e7fc);
+}
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #888;
+  transform: translateY(4px);
+}
+
+@media only screen and (max-width: 1420px) {
+  form {
+    width: 50%;
+  }
+  .info2 input,
+  .info3 input {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 970px) {
+  .info2 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .col1,
+  .col2 {
+    margin: 5px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .profile_img img {
+    width: 90px;
+    height: 90px;
+    margin: 10px 0;
+  }
+  .box {
+    margin-top: 0;
+  }
+  .box {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .info3 img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .info_for_person p {
+    text-align: center;
+  }
+  .info_for_person {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .butbox {
+    margin: 10px;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .info1 h1 {
+    font-size: 1.5em;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .butbox button {
+    position: relative;
+    margin: 10px 0;
+    height: 40px;
+    width: 100px;
+    line-height: 40px;
+    border-radius: 20px;
+    font-size: 16px;
+    border: 2px;
+  }
+}

@@ -1,7 +1,6 @@
 
-alert("fgh");
+
 function getLocation() {
-  console.log("xxx")
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(pos) {
         //You have your locaton here
@@ -18,74 +17,27 @@ function getLocation() {
       
     }
 
-function test(){
-  console.log("ok")
-}
-
-function Send_Information(){
-        var fullName= document.getElementById(person_name).value;
-        alert("name: "+fullName);
-        alert("hi")
-
-}
-var login = document.getElementById("Login");
-var signin = document.getElementById("signin");
 
 
 
-/** function myFunction() {
-     if (name1.value.endsWith("@admin"))
-{
-        login.action="index4.html"
-      }
-    
 
-    else{
-           login.action="index.html"
-    }
+
+function myFunction() {
+ 
+
+  var x, i;
+  x = document.querySelectorAll(".change");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.backgroundColor = "#fff";
+    x[i].style.border = "2px solid #000";
+    x[i].disabled = false;
+  }
+
+ 
 
 
  
     
-}**/
-
-
-
-function myFunction_signUp() {
-  var ID = document.getElementById("personal_Id").value;
-
- 
-  if ( (document.getElementById("password").value== document.getElementById("passwordR").value) && ID.endsWith("@admin")  )
-{
-  
-  signin.action="index4.html"
-
-
-
-
-   }
- 
-
- else if (!(ID.endsWith("@admin"))&&!(document.getElementById("password").value== document.getElementById("passwordR").value)){
-  signin.action="index3.html";
- alert("please put @admin in the end of your ID");
- alert("make sure that your password indentical");
-        
- }
- else if (!(document.getElementById("password").value== document.getElementById("passwordR").value)){
-  signin.action="index3.html";
-  alert("make sure that your password indentical");
-        
- }
- else {
-  signin.action="index3.html";
-  
-  alert("please put @admin in the end of your ID");
-
- }
-
-
-
- 
 }
+
 
