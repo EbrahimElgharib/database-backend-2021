@@ -128,3 +128,29 @@ def managerView(request):
 
    }
    return render(request, 'profile/manager.html',context)
+   
+   
+   
+def driverView(request):
+   profile = Employees.objects.get(employee=request.user)
+   station_emp = StationEmployees.objects.get(manager=profile)
+
+   # test
+   print('here ___>>>')
+   print(station_emp.manager.employee_name)
+   print(station_emp.station.station_id)
+
+
+   # return all crew
+   crews = Crew.objects.filter(station=station_emp.station.station_id)
+   # test
+   print('crews after')
+   for crew in crews:   
+      print(crew.crew_status)
+
+   context = {
+      'station_emp' : station_emp,
+      'crews' : crews,
+
+   }
+   return render(request, 'profile/driver.html',context)

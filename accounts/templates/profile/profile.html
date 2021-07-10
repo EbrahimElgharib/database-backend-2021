@@ -14,6 +14,16 @@
       {{station_emp_form}}
     {% endif %}
       
+    <!-- if Driver show and edit Crew Status -->
+    
+    {% if station_emp_form %}
+      
+      {% if station_emp_form.job_title.value == "Driver" %}
+        <h5>I am Driver</h5>
+      {% endif %}
+        
+    {% endif %}
+      
 
 
     <div class="submission">
@@ -23,8 +33,17 @@
           <a class="btn btn-primary mt-4 ml-auto" type="button" href="{% url 'password_change' %}" role="button">Change Password</a>
 
 
+          {% if manager_form %}
           <!-- for manager control page -->
           <a class="btn btn-primary mt-4 ml-auto" type="button" href="{% url 'accounts:manager' %}" role="button">Manager Control</a>
+          {% endif %}
+
+          {% if station_emp_form %}
+          <!-- for driver control page -->
+          <a class="btn btn-primary mt-4 ml-auto" type="button" href="{% url 'accounts:driver' %}" role="button">Driver Control</a>
+          {% endif %}
+
+
         </div>
       </div>
 
