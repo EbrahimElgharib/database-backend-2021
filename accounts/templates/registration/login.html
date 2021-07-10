@@ -51,23 +51,23 @@
             {% csrf_token %}
           <div class="container">
             <label for="UsID"><b>Username</b></label>
-            <!-- <input
+            <input
               type="text"
               id="Id_User"
               placeholder="Enter username"
-              name="UsID"
+              name="{{ form.username.name }}"
               required
-            /> -->
-            {{ form.username }}
+            />
+            <!-- {{ form.username }} -->
 
             <label for="psw"><b>Password</b></label>
-            <!-- <input
+            <input
               type="password"
               placeholder="Enter Password"
-              name="psw"
+              name="{{ form.password.name }}"
               required
-            /> -->
-            {{ form.password }}
+            />
+            <!-- {{ form.password }} -->
 
             <div class="dflex dc jc aic">
               <div>

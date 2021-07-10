@@ -1,50 +1,188 @@
-<h2>Profile</h2>
+<!-- <h2>Profile</h2>
 
 <form action="" method="post">
-    {% csrf_token %}
-    {{ user_form }}
-    {{ profile_form }}
-
-    
-    {% if manager_form %}
-        I am Manager
-        {{manager_form}}
-    {% else %}
-      I am employee
-      {{station_emp_form}}
-    {% endif %}
-      
-    <!-- if Driver show and edit Crew Status -->
-    
-    {% if station_emp_form %}
-      
-      {% if station_emp_form.job_title.value == "Driver" %}
-        <h5>I am Driver</h5>
-      {% endif %}
-        
-    {% endif %}
-      
+  {% csrf_token %}
+  {{ user_form }}
+  {{ profile_form }}
 
 
-    <div class="submission">
-        <div class="row">
-          <button type="submit" class="btn btn-success mt-4 mr-3">Save Changes</button>
-          <button type="reset" class="btn btn-primary mt-4">Reset</button>
-          <a class="btn btn-primary mt-4 ml-auto" type="button" href="{% url 'password_change' %}" role="button">Change Password</a>
+  {% if manager_form %}
+  I am Manager
+  {{manager_form}}
+  {% else %}
+  I am employee
+  {{station_emp_form}}
+  {% endif %} -->
+
+<!-- if Driver show and edit Crew Status -->
+
+<!-- {% if station_emp_form %}
+
+  {% if station_emp_form.job_title.value == "Driver" %}
+  <h5>I am Driver</h5>
+  {% endif %}
+
+  {% endif %} -->
 
 
-          {% if manager_form %}
-          <!-- for manager control page -->
-          <a class="btn btn-primary mt-4 ml-auto" type="button" href="{% url 'accounts:manager' %}" role="button">Manager Control</a>
-          {% endif %}
-
-          {% if station_emp_form %}
-          <!-- for driver control page -->
-          <a class="btn btn-primary mt-4 ml-auto" type="button" href="{% url 'accounts:driver' %}" role="button">Driver Control</a>
-          {% endif %}
+<!-- 
+  <div class="submission">
+    <div class="row">
+      <button type="submit" class="btn btn-success mt-4 mr-3">Save Changes</button>
+      <button type="reset" class="btn btn-primary mt-4">Reset</button>
+      <a class="btn btn-primary mt-4 ml-auto" type="button" href="{% url 'password_change' %}" role="button">Change
+        Password</a> -->
 
 
+<!-- {% if manager_form %} -->
+<!-- for manager control page -->
+<!-- <a class="btn btn-primary mt-4 ml-auto" type="button" href="{% url 'accounts:manager' %}" role="button">Manager
+        Control</a>
+      {% endif %} -->
+
+<!-- {% if station_emp_form %} -->
+<!-- for driver control page -->
+<!-- <a class="btn btn-primary mt-4 ml-auto" type="button" href="{% url 'accounts:driver' %}" role="button">Driver
+        Control</a>
+      {% endif %} -->
+
+<!-- 
+    </div>
+  </div>
+
+</form> -->
+
+
+
+
+
+{% load static %}
+{% load crispy_forms_tags %}
+<!-- front end -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/index6.css' %}" />
+  <title>Profile Page</title>
+</head>
+
+<body>
+  <div class="card_container">
+    <form method="post">
+      {% csrf_token %}
+      <div class="card">
+        <div class="info1">
+          <div class="profile_img">
+            <img src="{% static 'images/doctor.svg' %}" alt="" />
+          </div>
+          <div class="person_data">
+            <div id="fname" class="name">
+              <h3>{{ profile_form.employee_name|as_crispy_field }}</h3>
+            </div>
+
+            {% if station_emp_form %}
+
+            {% if station_emp_form.job_title.value == "Driver" %}
+            <div id="fname" class="job">
+              <p>Driver</p>
+            </div>
+            {% elif station_emp_form.job_title.value == "paramedic" %}
+            <div id="fname" class="job">
+              <p>Paramedic</p>
+            </div>
+            {% endif %}
+            {% endif %}
+
+            {% if manager_form %}
+            <div id="fname" class="job">
+              <p>Manager</p>
+            </div>
+            {% endif %}
+
+          </div>
         </div>
-      </div>
+        <div class="info2">
+          <div class="col1">
+            <div class="personal_phone">
+              {{ profile_form.phone_number|as_crispy_field }}
 
-</form>
+            </div>
+            <div class="personal_national_num">
+              {{ profile_form.national_number|as_crispy_field }}
+            </div>
+          </div>
+
+          <div class="col2">
+            <div class="personal_birthday">
+              {{ profile_form.birth_date|as_crispy_field }}
+            </div>
+            <div class="personal_address">
+              {{ profile_form.birth_date|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+        <div class="info3">
+          <div class="info_for_person">
+
+            <div class="box">
+              <div class="infobox">
+                <img src="{% static 'images/placeholder.svg' %}" alt="" />
+                {% if station_emp_form %}
+                {{ station_emp_form.station|as_crispy_field }}
+                {% elif manager_form %}
+                {{ manager_form.station|as_crispy_field }}
+                {% endif %}
+
+              </div>
+
+              {% if station_emp_form %}
+              <div class="infobox">
+                <img src="{% static 'images/id.svg' %}" alt="" />
+                {{ station_emp_form.crew|as_crispy_field }}
+              </div>
+
+              <div class="infobox">
+                <img src="{% static 'images/team.svg' %}" alt="" />
+                <p> crew status</p>
+                {{ station_emp_form.crew.crew_status }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="butbox">
+          <button type="submit" id="Save" class="signupbtn">Save</button>
+          <button type="reset" id="Save" class="signupbtn">reset</button>
+
+          {% if station_emp_form.job_title.value == "Driver" %}
+          <!-- for driver control page -->
+          <a href="{% url 'accounts:driver' %}"> <button type="button" id="Change" class="signupbtn">Control
+              Page</button>
+          </a>
+          {% elif station_emp_form.job_title.value == "paramedic" %}
+          <!-- for paramedic control page -->
+          <a href="{% url 'accounts:paramedic' %}"> <button type="button" id="Change" class="signupbtn">Control
+              Page</button>
+          </a>
+          {% elif manager_form %}
+          <!-- for paramedic control page -->
+          <a href="{% url 'accounts:manager' %}"> <button type="button" id="Change" class="signupbtn">Control
+              Page</button>
+          </a>
+          {% endif %}
+        </div>
+    </form>
+  </div>
+
+
+
+
+
+
+</body>
+
+</html>
