@@ -27,7 +27,12 @@ def profile(request):
 @login_required
 def profile(request):
    # get profile data to show it in form
-   profile = Employees.objects.get(employee=request.user)
+   # test for sure it is emp or admin ?
+   try:
+      profile = Employees.objects.get(employee=request.user)
+   except:
+      return redirect('/')
+
    # create emp station or manager
    if profile.emp_type==1:
       print('hi manager')
