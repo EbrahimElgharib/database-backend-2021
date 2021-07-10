@@ -87,7 +87,7 @@
               {% if manager %}
               <p>Manager</p>
 
-              {% elif station_emp.job_title == "paramedic" %}
+              {% elif station_emp.job_title == "Paramedic" %}
               <p>Paramedic</p>
               {% elif station_emp.job_title == "Driver" %}
               <p>Driver</p>
@@ -158,15 +158,15 @@
 
           {% if manager %}
           <!-- for manager control page -->
-            <a href="{% url 'accounts:manager' %}"> <button type="button" id="Change" class="signupbtn">Control Page</button>
+            <a href="{% url 'accounts:manager' %}"> <button type="button" id="Change" class="signupbtn">Manager Page</button>
             </a>
           {% elif station_emp.job_title == "Driver" %}
           <!-- for driver control page -->
-            <a href="{% url 'accounts:driver' %}"> <button type="button" id="Change" class="signupbtn">Control Page</button>
+            <a href="{% url 'accounts:driver' %}"> <button type="button" id="Change" class="signupbtn">Driver Page</button>
             </a>
-            {% elif station_emp.job_title == "paramedic" %}
+            {% elif station_emp.job_title == "Paramedic" %}
             <!-- for driver control page -->
-              <a href="{% url 'accounts:paramedic' %}"> <button type="button" id="Change" class="signupbtn">Control Page</button>
+              <a href="{% url 'accounts:paramedic' %}"> <button type="button" id="Change" class="signupbtn">Paramedic Page</button>
               </a>
           {% endif %}
 

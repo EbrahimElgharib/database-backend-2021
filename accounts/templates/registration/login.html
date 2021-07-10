@@ -1,4 +1,9 @@
 
+{% if user.is_authenticated %}
+  <h3> Error - May be you are login already </h3>
+
+{% else %}
+
 {% load static %}
 <!-- <h2>login</h2>
 
@@ -88,3 +93,5 @@
     <script src="{% static 'js/script.js' %}"></script>
   </body>
 </html>
+
+{% endif %}
