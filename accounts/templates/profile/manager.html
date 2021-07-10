@@ -1,0 +1,14 @@
+<h1>Manager Page Control</h1>
+
+{{manager.manager.employee_name}}
+{{manager.station.station_id}}
+
+{% for crew in crews %}
+    <h3>{{crew.crew_status}}</h3>
+    <h3>{{crew.crew_id}}</h3>
+------------------
+{% endfor %}
+
+
+
+

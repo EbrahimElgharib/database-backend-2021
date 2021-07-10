@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models import manager
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from .models import Employees,Manager,StationEmployees
+from .models import Employees,Manager,StationEmployees, Crew
 
 from .forms import UserForm, EmployeesForm, ManagerForm, StationEmployeesForm
 # from .models import Profile
@@ -97,3 +97,29 @@ def profile(request):
       context['station_emp_form'] = station_emp_form
    
    return render(request, 'profile/profile.html',context)
+
+
+
+def managerView(request):
+   profile = Employees.objects.get(employee=request.user)
+   manager = Manager.objects.get(manager=profile)
+
+   # test
+   print('here ___>>>')
+   print(manager.manager.employee_name)
+   print(manager.station.station_id)
+
+
+   # return all crew
+   crews = Crew.objects.filter(station=manager.station.station_id)
+   # test
+   print('crews after')
+   for crew in crews:   
+      print(crew.crew_status)
+
+   context = {
+      'manager' : manager,
+      'crews' : crews,
+
+   }
+   return render(request, 'profile/manager.html',context)
