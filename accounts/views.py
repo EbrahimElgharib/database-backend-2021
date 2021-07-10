@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from django.db.models import manager
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from .models import Employees,Manager,StationEmployees, Crew
+from .models import Casualties, Employees,Manager,StationEmployees, Crew
 
-from .forms import CrewForm, UserForm, EmployeesForm, ManagerForm, StationEmployeesForm
+from .forms import CasualtiesForm, CrewForm, UserForm, EmployeesForm, ManagerForm, StationEmployeesForm
 # from .models import Profile
 
 # Create your views here.
@@ -139,9 +139,19 @@ def driverView(request):
 def paramedic(request):
    profile = Employees.objects.get(employee=request.user)
    station_emp = StationEmployees.objects.get(station_employee=profile)
+   form = CasualtiesForm(request.POST)
+   print('1')
+   if form.is_valid():
+      print('2')
+      form.save()
+      print('3')
+
    context = {
       'profile':profile,
       'station_emp':station_emp,
+      'casualties_form':CasualtiesForm()
    }
+   print('4')
    return render(request, 'profile/paramedic.html',context)
+
 

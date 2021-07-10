@@ -16,10 +16,10 @@
         <title>paramedic</title>
       </head>
       <body>
-        <form action="">
+        <form method="post">
           <div class="all_contianer">
             <div class="main_cont">
-              <div class="sub">
+              <!-- <div class="sub">
                 <div class="img_cont">
                   <img src="{% static 'images/doctor.svg' %}" alt="" />
                 </div>
@@ -67,6 +67,16 @@
                     insert
                   </button>
                 </div>
+              </div> -->
+            
+            
+            
+            {% csrf_token %}
+              {{casualties_form}}
+              <div class="butbox">
+                <button type="submit" id="Save" class="signupbtn">
+                  insert
+                </button>
               </div>
             </div>
           </div>

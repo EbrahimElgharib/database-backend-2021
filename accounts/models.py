@@ -1,4 +1,4 @@
-from reporting_accident.models import Hospital
+from reporting_accident.models import Accident, Hospital
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
@@ -47,7 +47,7 @@ class StationEmployees(models.Model):
     job_title = models.CharField(db_column='Job_Title', max_length=45)  # Field name made lowercase.
     number_of_accidents = models.IntegerField(db_column='Number_Of_Accidents', blank=True, null=True)  # Field name made lowercase.
     def __str__(self):
-            return str(self.station_employee)
+            return str(self.station_employee) +'  ____  '+ str(self.job_title)
     class Meta:
         managed = False
         db_table = 'STATION_EMPLOYEES'
@@ -93,3 +93,16 @@ class Vehicles(models.Model):
     class Meta:
         managed = False
         db_table = 'VEHICLES'
+
+
+class Casualties(models.Model):
+    casualties_id = models.AutoField(db_column='Casualties_ID', primary_key=True)  # Field name made lowercase.
+    accident = models.ForeignKey(Accident, models.DO_NOTHING, db_column='Accident_ID')  # Field name made lowercase.
+    casualty_name = models.CharField(db_column='Casualty_Name', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    age = models.CharField(db_column='Age', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    gender = models.IntegerField(db_column='Gender')  # Field name made lowercase.
+    weight = models.DecimalField(db_column='Weight', max_digits=4, decimal_places=1, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'CASUALTIES'
