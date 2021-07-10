@@ -1,4 +1,5 @@
 {% load static %}
+{% load bootstrap4 %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +20,10 @@
         <form method="post">
           <div class="all_contianer">
             <div class="main_cont">
-              <!-- <div class="sub">
+              {% csrf_token %}
+
+
+              <div class="sub">
                 <div class="img_cont">
                   <img src="{% static 'images/doctor.svg' %}" alt="" />
                 </div>
@@ -33,7 +37,10 @@
                     <input type="text" value="{{station_emp.station.station_id}}"/>
                   </div>
                 </div>
-                <div class="lebels_container">
+
+
+
+                <!-- <div class="lebels_container">
                   <div class="info">
                     <label for="">causality Name</label>
                     <input type="text" />
@@ -61,23 +68,25 @@
                     <label for="">weight</label>
                     <input type="text" />
                   </div>
-                </div>
+                </div> -->
+                
+                
+
+                <!-- {{casualties_form}} -->
+                {% bootstrap_form casualties_form %}
+
                 <div class="butbox">
                   <button type="submit" id="Save" class="signupbtn">
                     insert
                   </button>
                 </div>
-              </div> -->
-            
-            
-            
-            {% csrf_token %}
-              {{casualties_form}}
-              <div class="butbox">
-                <button type="submit" id="Save" class="signupbtn">
-                  insert
-                </button>
               </div>
+            
+            
+            
+            
+              
+
             </div>
           </div>
         </form>

@@ -114,6 +114,10 @@ def driverView(request):
          # myprofile.crew_id = station_emp.crew
          crew_form.save()
          print('myprofile is saved')
+
+         if crew_form.crew_status == 'Available':
+                print('Available')
+
          return redirect('/accounts/profile/driver')
       else:
          print('crew_form not valid')

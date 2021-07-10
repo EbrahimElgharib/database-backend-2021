@@ -1,25 +1,32 @@
-<h1>Driver</h1>
+{% load static %}
+{% load bootstrap4 %}
+{% load crispy_forms_tags %}
 
-{{station_emp.station.station_id}}
-<br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver</title>
+</head>
+<body>
+    <h1>Driver</h1>
+
+<!-- {{station_emp.station.station_id}}
 {{station_emp.crew.crew_id}}
-<br>
-
 {{station_emp.crew.current_accident}}
-<br>
-
-{{station_emp.crew.crew_status}}
-<br>
-<br>
-<br>
-<br>
+{{station_emp.crew.crew_status}} -->
+{{station_emp}}
 
 
 <form method="post">
     {% csrf_token %}
-{{crew_form}}
+    {% bootstrap_form crew_form %}
 <br>
 
 <button type="submit" class="btn btn-success mt-4 mr-3">Save Changes</button>
 
 </form>
+</body>
+</html>
